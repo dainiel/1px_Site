@@ -8,7 +8,7 @@
 	<title>1px Extesnion Offical Webstie - 1px Chrome Extesnion can help F2E to find the 1px difference between the psd and HTML.</title>
 	<link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/gebccnmciopflhcdihopmphapifkkfdh" />
 	<style>
-		.dowload{display:inline-block;padding:5px 12px;background-color:#2C3E50;color:#ECF0F1;}
+		.dowload{cursor:pointer;display:inline-block;padding:5px 12px;background-color:#2C3E50;color:#ECF0F1;border:none;}
 	</style>
 </head>
 <body>
@@ -17,7 +17,7 @@
 		<h2>本扩展旨在帮助减少设计师对前端工程师的折磨</h2>
 	</hgroup>
 	
-	<a class="dowload" href="">点击安装1px Chrome扩展</a>
+	<button id="download" class="dowload">点击安装1px Chrome扩展</button>
 
 	<ol>
 		<li>
@@ -35,6 +35,31 @@
 	</ol>
 
 	<script>
+		var download = document.getElementById("download"),
+			url = "https://chrome.google.com/webstore/detail/gebccnmciopflhcdihopmphapifkkfdh";
+		reg();
+
+		function reg() {
+			download.onclick = downloadExt;
+		}
+
+		function downloadExt() {
+			download.innerHTML = "安装中";
+			chrome.webstore.install(url, ok, error);
+		}
+
+		function ok() {
+			download.innerHTML = "安装成功";
+		}
+
+		function error() {
+			reg();
+			download.innerHTML = "安装失败,点击重试";
+		}
+		
+	</script>
+	<!-- 
+	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -42,6 +67,6 @@
 
 	  ga('create', 'UA-42390225-1', 'dainiel.github.io');
 	  ga('send', 'pageview');
-	</script>
+	</script> -->
 </body>
 </html>
