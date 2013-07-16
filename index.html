@@ -13,27 +13,70 @@
 	</style>
 </head>
 <body>
-	<hgroup>
-		<h1>1px</h1>
-		<h2>本扩展旨在帮助减少设计师对前端工程师的折磨</h2>
-	</hgroup>
-	
-	<button id="download" class="dowload">点击安装1px Chrome扩展</button>
+	<div id="en" class="container">
+		<hgroup>
+			<h1>1px</h1>
+			<h2>I can help F2E to find the 1px difference between the psd and HTML.</h2>
+		</hgroup>
+		
+		<button id="download" class="dowload">Click To Install</button>
+		<p>or goto <a href='https://chrome.google.com/webstore/detail/1px/gebccnmciopflhcdihopmphapifkkfdh'>chrome webstore<a></p>
 
-	<ol>
-		<li>
-			<h3>为什么会有1px？</h3>
-			<p>目前设计师对于设计图的还原度要求较高</p>
-		</li>
-		<li>
-			<h3>1px能做什么？</h3>
-			<p>将设计图与网页进行对比，找到其中的细微差别</p>
-		</li>
-		<li>
-			<h3>怎么使用1px？</h3>
-			<p>安装1px后点击右上角1px的图标，然后点击“添加图片”</p>
-		</li>
-	</ol>
+		<ol>
+			<li>
+				<h3>Why is 1px developped?</h3>
+				<p>Designers's eyssight is better and better,and they can find the 1px difference between the psd and HTML.</p>
+			</li>
+			<li>
+				<h3>What can 1px do?</h3>
+				<p>Compare the design and HTML page.</p>
+			</li>
+			<li>
+				<h3>How to use 1px?</h3>
+				<p>Click the 1px icon,and click add after the page pop up</p>
+			</li>
+		</ol>
+	</div>
+
+	<div id="zh-CN" class="container">
+		<hgroup>
+			<h1>1px</h1>
+			<h2>本扩展旨在帮助减少设计师对前端工程师的折磨</h2>
+		</hgroup>
+		
+		<button id="download" class="dowload">点击安装1px Chrome扩展</button>
+		<p>或者去<a href='https://chrome.google.com/webstore/detail/1px/gebccnmciopflhcdihopmphapifkkfdh'>chrome webstore<a>安装</p>
+
+		<ol>
+			<li>
+				<h3>为什么会有1px？</h3>
+				<p>目前设计师对于设计图的还原度要求较高</p>
+			</li>
+			<li>
+				<h3>1px能做什么？</h3>
+				<p>将设计图与网页进行对比，找到其中的细微差别</p>
+			</li>
+			<li>
+				<h3>怎么使用1px？</h3>
+				<p>安装1px后点击右上角1px的图标，然后点击“添加图片”</p>
+			</li>
+		</ol>
+	</div>
+
+	<script>
+		(function() {
+			var lan = navigator.language||navigator.userLanguage,
+				hideContainer;
+			if(lan == "zh-CN") {
+				hideContainer = document.getElementById("en");
+			}
+			else {
+				hideContainer = document.getElementById("zh-CN");
+			}
+
+			hideContainer.style.display = "none";
+		})();
+	</script>
 
 	<script>
 		var download = document.getElementById("download"),
@@ -45,17 +88,18 @@
 		}
 
 		function downloadExt() {
-			download.innerHTML = "安装中";
+			download.innerHTML = "installing";
 			chrome.webstore.install(url, ok, error);
 		}
 
 		function ok() {
-			download.innerHTML = "安装成功";
+			download.innerHTML = "install successfully";
 		}
 
 		function error() {
 			reg();
-			download.innerHTML = "安装失败, 到<a href='https://chrome.google.com/webstore/detail/1px/gebccnmciopflhcdihopmphapifkkfdh'>chrome webstore安装<a>";
+			download.onclick = null;
+			download.innerHTML = "Error, please go to <a href='https://chrome.google.com/webstore/detail/1px/gebccnmciopflhcdihopmphapifkkfdh'>chrome webstore<a>";
 		}
 		
 	</script>
